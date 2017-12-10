@@ -5,6 +5,8 @@ Finding simple moving average
 by receiving data as a list 
 and span as span
 '''
+
+
 def simple_moving_average(data, span=3):
     if len(data) < span:
         return data[len(data)-1]    # returning last item of list if not enough data provided to compute SMA
@@ -13,5 +15,5 @@ def simple_moving_average(data, span=3):
     return sma
 
 
-data = [1.12, 2.23, 3.34, 4.45, 5.56]
-print(simple_moving_average(data))
+# data = [1.12, 2.23, 3.34, 4.45, 5.56]
+# print(simple_moving_average(data))
