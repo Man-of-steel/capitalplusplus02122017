@@ -7,7 +7,7 @@ profit = 0
 buy_quantity = sell_quantity = 0
 brokerage = 10
 
-file_data = pd.read_csv('G:\\Capital++\\historical_stock_data\\INFY_12Sep2015_to_04Oct2015.csv')
+file_data = pd.read_csv('G:\\Capital++\\historical_stock_data\\INFY_12Sep2015_to_04Oct2015.csv', header=None)
 one_minute_intraday_data_series = file_data.iloc[152:513, 6]   # specifically getting 15-Nov-2015 entire day data
 one_minute_intraday_data = one_minute_intraday_data_series.tolist()
 
