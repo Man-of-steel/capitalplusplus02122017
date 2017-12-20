@@ -31,11 +31,12 @@ def simulate_trade(data_set_csv_file, row_from, row_to, col,
     one_minute_intraday_data_series = file_data.iloc[row_from:row_to, col]  # getting intra-day data
     one_minute_intraday_data = one_minute_intraday_data_series.tolist()
 
+    print(one_minute_intraday_data[360])
     live_data = []
     log = open('G:\\Capital++\\docs\\log.txt', 'w')
     buy_price = 0
     fresh = True
-    for i in range(360):
+    for i in range(361):
         live_data.append(one_minute_intraday_data[i])
 
         if len(live_data) <= bigger_span:
@@ -46,7 +47,7 @@ def simulate_trade(data_set_csv_file, row_from, row_to, col,
             buy_quantity = int(liquid_fund / latest_price)
             liquid_fund -= buy_quantity * latest_price
             buy_price = latest_price
-            log.write('Bought ' + str(buy_quantity) + ' stocks at Rs.' + str(latest_price)
+            log.write('Bought ' + str(buy_quantity) + ' stocks for Rs.' + str(latest_price)
                       + ' each. Liquid fund spent : ' + str(buy_quantity * latest_price)
                       + ", Funds left : " + str(liquid_fund) + "\n-------\n")
             fresh = False
@@ -80,5 +81,5 @@ def optimize_and_log():
         if str(f).endswith('.csv'):
             all_csv_files.append(f)
 
-simulate_trade(data_set_csv_file='G:\\Capital++\\historical_stock_data\\BHARTIARTL.csv',
-               row_from=764, row_to=1124, col=6, target_change=0.0044, stop_loss_change=0.003)
+simulate_trade(data_set_csv_file='G:\\Capital++\\historical_stock_data\\INFY_12Sep2015_to_04Oct2015.csv',
+               row_from=152, row_to=513, col=6, target_change=0.0012, stop_loss_change=0.0008)
